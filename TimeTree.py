@@ -268,7 +268,7 @@ class Tree:
             ruleB(node, ctx, depth)
 
             #print " "*depth + str(node.label) + ":" + str(node.branchLength)
-            return node 
+            return node
 
         def ruleS(node, ctx, depth):
             if ctx.acceptToken('LPAREN'):
@@ -347,7 +347,7 @@ class Tree:
         leaves = self.getLeaves()
         nodes = self.getNodes()
         pos = [0.]*len(nodes)
-       
+
         def computePos(node):
             idx = nodes.index(node)
             if node.isLeaf():
@@ -393,7 +393,7 @@ class Tree:
         pos = [0.]*len(nodes)
 
         grid = [[" " for i in range(width)] for leaf in leaves]
-       
+
         def computePos(node):
             idx = nodes.index(node)
             if node.isLeaf():
@@ -408,7 +408,7 @@ class Tree:
 
         # Edges
         for i in range(len(nodes)):
-            
+
             if nodes[i].parent == None:
                 x1 = int(nodes[i].height/self.root.origin*(width-1))
                 x2 = width-1
@@ -425,7 +425,7 @@ class Tree:
                 grid[y1][x1:x2] = ['-']*(x2-x1)
                 for y in range(ymin+1, ymax):
                     grid[y][x2] = '|'
-            
+
         # Corners
         for i in range(len(nodes)):
 
@@ -449,8 +449,6 @@ class Tree:
                 grid[y][x] = '*'
             else:
                 grid[y][x] = '+'
-
-
 
         grid.reverse()
         leaves.reverse()
